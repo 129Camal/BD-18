@@ -1,3 +1,5 @@
+use agrup424;
+
 select * from elemento;
 select * from equipa;
 select * from seccao;

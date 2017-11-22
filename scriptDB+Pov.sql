@@ -71,6 +71,20 @@ CREATE TABLE IF NOT EXISTS `Agrup424`.`Elemento` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `Agrup424`.`Atividade` (
+  `idAtividade` INT NOT NULL,
+  `Designacao` VARCHAR(45) NULL,
+  `Descricao` VARCHAR(45) NULL,
+  `Equipa_idEquipa` INT NULL,
+  PRIMARY KEY (`idAtividade`),
+  INDEX `fk_Atividade_Equipa1_idx` (`Equipa_idEquipa` ASC),
+  CONSTRAINT `fk_Atividade_Equipa1`
+    FOREIGN KEY (`Equipa_idEquipa`)
+    REFERENCES `Agrup424`.`Equipa` (`idEquipa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
