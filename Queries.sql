@@ -19,8 +19,14 @@ SELECT * FROM Elemento
        INNER JOIN EQUIPA ON Equipa.idEquipa = Elemento.Equipa_idEquipa
        WHERE Elemento.Equipa_idEquipa = '2';
        
-SELECT Nin,Nome,funcao_designacao,seccao_designacao FROM Elemento
+SELECT Nin,Nome,funcao_designacao,seccao_designacao FROM Elemento;
 
-
-
+SELECT CONCAT(Elemento.Funcao_Designacao,Nome) AS LINDO FROM Elemento
+	WHERE Nome IN ('Joaquim Silva Antunes Pinto','Fernanda Carvalho');
+    
+SELECT Nin,Nome FROM Elemento
+	where Idade > (SELECT avg(Idade) FROM Elemento);
+    
+SELECT Designacao FROM Funcao
+	WHERE Designacao IN (LIKE'chefe'); 
 	
