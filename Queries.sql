@@ -11,5 +11,8 @@ SELECT * FROM Elemento
 	WHERE 
 	Elemento.Funcao_designacao = "Chefe" AND Elemento.Seccao_Designacao = "Lobitos";
 
+SELECT Elemento.Nome,Elemento.Idade
+		FROM Elemento GROUP BY Idade;
+        
 
 	
