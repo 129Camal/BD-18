@@ -15,9 +15,9 @@ insert into Equipa
 				(1,'Patrulha Falcão', 'Voaremos mais alto!', 'Cri cri!', 'Exploradores'),
 				(2,'Equipa Camões', 'Blablabla','Urra!', 'Pioneiros'),
 				(3,'Tribo Touro', 'Olééé!', 'MU!', 'Caminheiros'),
-                (4,'Trivium','Ziga-liga','Yay!', 'Lobitos')
-				;                
-				
+                (4,'Trivium','Ziga-liga','Yay!', 'Lobitos'),
+                (5,'Tribo tribal', 'UIPI!', 'YESSS', 'Exploradores')				;                
+				;
 insert into Funcao
 			
 			(Designacao, Descricao)
@@ -30,12 +30,14 @@ insert into Funcao
             ('Cozinheiro','Trata das refeições da equipa'),
             ('Animador', 'Anima a equipa.'),
             ('Guia', 'Coordenador da equipa'),
-            ('Tesoureiro', 'Pessoa que lida com o dinheiro'),
+            ('Tesoureiro', 'Pessoa que lida com o dinheiro da equipa'),
             ('Chefe de Secção','Chefe de uma dada secção'),
-            ('Secretário','Trata da papelada'),
-            ('Guarda-material','Guarda o material'),
-            ('Socorrista','Socorre')
-            ;
+            ('Secretário','Trata da papelada da equipa'),
+            ('Guarda-material','Guarda o material da equipa'),
+            ('Socorrista','Cuida das questões de saúde da equipa'),
+            ('Escuteiro não ativo','Antigo elemento do Agrupamento')
+			;
+
                 
 insert into Elemento
 			(Nin, Nome, Idade, Sexo, DatadeNasc, Morada, Telemovel, Email, NoitesdeCampo, Seccao_Designacao, Equipa_idEquipa, Funcao_Designacao)

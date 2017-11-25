@@ -1,6 +1,14 @@
 use agrup424;
 
-CREATE procedure NomeAtividade(IN actividade VARCHAR(20));
+DELIMITER //
+CREATE procedure InsereAtividade (IN actividade VARCHAR(20), IN descricao VARCHAR(150))
 
-begin
-SELECT 
+BEGIN
+	INSERT INTO  Atividade(Designacao,Descricao)
+    VALUES (atividade, descricao);
+END
+//
+
+DELIMITER // 
+
+CALL InsereAtividade('Escondidas','Integrar as pessoas no grupo')

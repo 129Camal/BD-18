@@ -4,6 +4,7 @@ use agrup424;
 select * from elemento;
 select * from equipa;
 select * from seccao;
+select * from funcao;
 select * from elemento where Morada='Bairro 1º Dezembro, nº11';
 
 SELECT * FROM Elemento
@@ -13,6 +14,13 @@ SELECT * FROM Elemento
 
 SELECT Elemento.Nome,Elemento.Idade
 		FROM Elemento GROUP BY Idade;
-        
+
+SELECT * FROM Elemento
+       INNER JOIN EQUIPA ON Equipa.idEquipa = Elemento.Equipa_idEquipa
+       WHERE Elemento.Equipa_idEquipa = '2';
+       
+SELECT Nin,Nome,funcao_designacao,seccao_designacao FROM Elemento
+
+
 
 	
