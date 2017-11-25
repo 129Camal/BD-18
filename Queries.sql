@@ -7,6 +7,8 @@ select * from seccao;
 select * from funcao;
 select * from elemento where Morada='Bairro 1º Dezembro, nº11';
 
+CALL InsereAtividade(11,'Escondidas','Integrar as pessoas no grupo','2017-11-20',2);
+
 SELECT Atividade.Equipa_idEquipa AS 'ID de Equipa',COUNT(*) AS 'Nº de Atividades Realizadas pela Tribo Touro' FROM Atividade
 	WHERE Atividade.Equipa_idEquipa = 2;
 
