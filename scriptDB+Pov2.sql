@@ -18,6 +18,21 @@ insert into Equipa
                 (4,'Trivium','Ziga-liga','Yay!', 'Lobitos'),
                 (5,'Tribo tribal', 'UIPI!', 'YESSS', 'Exploradores')				;                
 				;
+                
+insert into Atividade(idAtividade, Designacao,Descricao, Equipa_idEquipa, dia)
+			values
+            (1,'Debates de Personalidades','Forma de promover o diálogo dentro da Equipa',1,'2015-03-15'),
+            (2,'Debates de Personalidades','Forma de promover o diálogo dentro da Equipa',3,'2015-04-24'),
+            (3,'Caminhada Florestal','Caminhada pelas zonas desflorestadas para mostrar as consequências',2,'2016-01-24'),
+            (4,'Concurso de Jogo do Galo','Desenvolvimento do raciocinio',4,'2016-02-16'),
+            (5,'Concurso de Xadrez','Desenvolvimento do raciocinio',3,'2016-04-04'),
+            (6,'Pontes Flutuantes','Percurso radical',2,'2016-08-18'),
+            (7,'Convivio de Natal','Forma de promover o diálogo dentro do Agrupamento',1,'2016-12-24'),
+            (8,'Convivio de Natal','Forma de promover o diálogo dentro do Agrupamento',2,'2016-12-24'),
+            (9,'Convivio de Natal','Forma de promover o diálogo dentro do Agrupamento',3,'2016-12-24'),
+            (10,'Convivio de Natal','Forma de promover o diálogo dentro do Agrupamento',4,'2016-12-24')
+            ;
+
 insert into Funcao
 			
 			(Designacao, Descricao)
@@ -26,6 +41,10 @@ insert into Funcao
             ('Chefe','Chefe de alguma secção.'),
             ('Chefe Tesoureiro','Chefe de contas'),
             ('Chefe Secretário','Chefe da papelada'),
+            ('Chefe dos Lobitos','Lidera os Lobitos'),
+            ('Chefe dos Exploradores','Lidera os Exploradores'),
+            ('Chefe dos Pioneiros','Lidera os Pioneiros'),
+            ('Chefe dos Caminheiros','Lidera os Caminheiros'),
             ('Relações Públicas','Trata das relações públicas da equipa'),
             ('Cozinheiro','Trata das refeições da equipa'),
             ('Animador', 'Anima a equipa.'),
@@ -45,10 +64,10 @@ insert into Elemento
 				
                 (002,'João António Jubileu', 40, 'M', '1977-01-05', 'Rua de Barros, nº8', 914236742, 'joaojub@gmail.com', 145, null, null, 'Chefe Tesoureiro'),
                 (003,'Fernanda Carvalho', 35, 'F', '1982-01-9', 'Rua da Universidade, nº63', 914342136, 'nanda@gmail.com', 140, null, null, 'Chefe Secretário'),
-				(004,'Manuel Francisco Carvalho', 30, 'M', '1087-02-18', 'Rua das Cruzes, nº68', 963265642, 'mfc@gmail.com', 123, 'Lobitos', null, 'Chefe'),
-                (005,'Maria João Antunes', 28, 'F', '1989-01-9', 'Bairro do Pão, nº73', 932456336, 'mja@gmail.com', 130, 'Pioneiros', null, 'Chefe'),
-                (006,'Paulo Pinto', 31, 'M', '1987-12-01', 'Rua dos Peões, nº 14 andar: 2ªEsq', 919238456, 'pPinto@hotmail.com', 150, 'Exploradores', null,'Chefe'),
-                (007,'João Filipe Antunes', 27, 'M', '1992-08-19','Bairro do Pão, nº73', 97895356, 'joan@gmail.com', 120, 'Caminheiros', null,'Chefe'),
+				(004,'Manuel Francisco Carvalho', 30, 'M', '1087-02-18', 'Rua das Cruzes, nº68', 963265642, 'mfc@gmail.com', 123, null, null, 'Chefe dos Lobitos'),
+                (005,'Maria João Antunes', 28, 'F', '1989-01-9', 'Bairro do Pão, nº73', 932456336, 'mja@gmail.com', 130, null, null, 'Chefe dos Pioneiros'),
+                (006,'Paulo Pinto', 31, 'M', '1987-12-01', 'Rua dos Peões, nº 14 andar: 2ªEsq', 919238456, 'pPinto@hotmail.com', 150, null, null,'Chefe dos Exploradores'),
+                (007,'João Filipe Antunes', 27, 'M', '1992-08-19','Bairro do Pão, nº73', 97895356, 'joan@gmail.com', 120, null, null,'Chefe dos Caminheiros'),
                 (008,'José Messias', 22, 'M', '1995-07-15', 'Rua da Igreja, nº14', 914324569,'jm@gmail.com', 90, 'Caminheiros', 3, 'Relações Públicas'),
                 (009,'Ricardo Carvalho', 21, 'M', '1996-02-23', 'Rua da Igreja, nº19', 934324555,'ricardocarvz@gmail.com', 71, 'Caminheiros', 3, 'Cozinheiro'),
                 (010,'Lucas Ribeiro Pereira', 23, 'M', '1994-07-15', 'Bairro 1º Dezembro, nº11', 911117299,'lrpereiraa@gmail.com', 86, 'Caminheiros', 3, 'Animador'),
