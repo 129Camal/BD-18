@@ -24,8 +24,8 @@ SET @dias = '2015-03-15';
 SET @idEquipa = 1;
 CALL InsereAtividade(@designacao,@descricao,@idEquipa,@diasatividade);
 
+DROP procedure InsereAtividade;
 
-<<<<<<< HEAD
 CALL InsereAtividade('Escondidas','Integrar as pessoas no grupo')
 
 DELIMITER //
@@ -39,5 +39,5 @@ BEGIN
     END IF;
 END 
 //
-=======
->>>>>>> a3e67ea9fd293713dfd35cf3f2fafbf8bb22b0c8
+
+

@@ -7,7 +7,28 @@ select * from seccao;
 select * from funcao;
 select * from elemento where Morada='Bairro 1º Dezembro, nº11';
 
-CALL InsereAtividade(11,'Escondidas','Integrar as pessoas no grupo','2017-11-20',2);
+DELIMITER $$ 
+CREATE procedure quatro(IN seccaopretendida VARCHAR(45), IN atividade VARCHAR(40))
+
+BEGIN
+        
+        SELECT * FROM Elemento
+			INNER JOIN Funcao 
+			ON Elemento.Funcao_Designacao = Funcao.Designacao 
+				INNER JOIN Seccao 
+				ON Elemento.Seccao_Designacao = Seccao.Designacao
+					INNER JOIN Atividade 
+                    ON Elemento.Equipa_idEquipa = Atividade.Equipa_idEquipa
+					WHERE (Seccao.Designacao = seccaopretendida AND Atividade.Designacao = atividade);
+        
+
+END; $$
+
+SET @seccao = 'Exploradores';
+SET @atividade ='Convivio de Natal';
+CALL quatro(@seccao,@atividade);
+
+DROP procedure quatro;
 
 SELECT Atividade.Equipa_idEquipa AS 'ID de Equipa',COUNT(*) AS 'Nº de Atividades Realizadas pela Tribo Touro' FROM Atividade
 	WHERE Atividade.Equipa_idEquipa = 2;
@@ -22,29 +43,37 @@ SELECT Elemento.Nome,Elemento.Idade
 
 SELECT * FROM Elemento
        INNER JOIN EQUIPA ON Equipa.idEquipa = Elemento.Equipa_idEquipa
-       WHERE Elemento.Equipa_idEquipa = '2';
-       
-<<<<<<< HEAD
-SELECT Nin,Nome,funcao_designacao,seccao_designacao FROM Elemento;
+       WHERE Elemento.Equipa_idEquipa = '2';       
 
-SELECT CONCAT(Elemento.Funcao_Designacao,Nome) AS LINDO FROM Elemento
-	WHERE Nome IN ('Joaquim Silva Antunes Pinto','Fernanda Carvalho');
-    
-SELECT Nin,Nome FROM Elemento
-	where Idade > (SELECT avg(Idade) FROM Elemento);
-    
-SELECT Designacao FROM Funcao
-	WHERE Designacao IN (LIKE'chefe'); 
-=======
+-- Query 1: Lista com Nin, Nome , Função e Secção a que cada elemento pertence; 
 SELECT Nin,Nome,funcao_designacao AS 'Função',seccao_designacao AS 'Seccção'  FROM Elemento;
 
+-- Query 2: Nº de Escuteiros do Agrupamento;
 SELECT COUNT(*) AS 'Nº de Escuteiros do Agrupamento' FROM Elemento
 
+-- Query3: Que funções existem em cada seccção
+-- DELIMITER $$
+-- CREATE procedure funcoes(IN seccaopretendida VARCHAR(45))
 
- 
-	
+	-- BEGIN
+    
+    -- SELECT Elemento.funcao_designacao AS 'Funções' FROM Elemento
+	-- INNER JOIN Seccao ON Seccao.Designacao = Elemento.Seccao_Designacao
+    -- WHERE Elemento.Seccao_Designacao = seccaopretendida;
+
+	-- END $$
+    
+-- SET @seccaopretendida = 'Lobitos';
+-- CALL funcoes(@seccaopretendida);
+
+-- DROP procedure funcoes;
+
+-- Query 4: Os elementos da seccção X que fizeram determinada Atividade Y e quais são as suas funções.
 
 
 
->>>>>>> a3e67ea9fd293713dfd35cf3f2fafbf8bb22b0c8
+
+
+
+
 	
