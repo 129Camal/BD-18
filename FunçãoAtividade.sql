@@ -38,7 +38,7 @@ BEGIN
 	INSERT INTO Elemento(Nin,Nome,Idade,DatadeNasc,Morada,Telemovel,Email,NoitesdeCampo,
 						Equipa_idEquipa,Seccao_Designacao,Funcao_Designacao)
 			VALUES (Nin_u,Nome_u,Idade_u,DatadeNasc_u,Morada_u,Telemovel_u,Email_u,NoitesdeCampo_u,
-						Equipa_idEquipa_u,AtribuirSeccao(Idade_u),Funcao_Designacao_u);
+						AtribuirEquipa(AtribuirSeccao(Idade_u)),AtribuirSeccao(Idade_u),Funcao_Designacao_u);
 END; $$
 
 DELIMITER //
@@ -61,22 +61,30 @@ BEGIN
 
 END; //
 
-/*DELIMITER //
+DELIMITER **
 CREATE function AtribuirEquipa (Seccao_u VARCHAR(45))
 returns INT
 BEGIN
-	return idEquipa FROM Equipa
-	INNER JOIN Seccao
-    ON Seccao.Designacao = Equipa.Seccao_Designaçao
-    INNER JOIN Elemento
-    ON Elemento.Equipa_idEquipa = Equipa.idEquipa
-    IF COUNT()
+	
     
-    WHERE(Seccao.Designacao = Seccao_u)
-	
-	
-END; //*/
+	 RETURN (SELECT MIN(ElementosEquipa(idEquipa)) FROM Equipa
+		where Seccao_Designacao = Seccao_u);
+     
+     
+     /*(SELECT ElementosEquipa(idEquipa) FROM Equipa) FROM Equipa
+				where Seccao_Designacao = Seccao_u)
+                where SELECT Equipa.idEquipa,;*/
+                
+	 
+END; **
 
+DELIMITER ++
+CREATE function ElemementosEquipa(Equipa_u INT)
+returns INT
+BEGIN
+	RETURN(select count(*) FROM Elemento
+				WHERE Equipa_idEquipa = Equipa_u); 
+END; ++
 
 SET @Nin_u = 41;
 SET @Nome_u = 'Ricardinho Costa';
@@ -96,6 +104,8 @@ CALL InserirElemento(@Nin_u,@Nome_u,@Idade_u,@DatadeNasc_u,@Morada_u,@Telemovel_
 
 drop procedure InserirElemento;
 drop FUNCTION AtribuirSeccao;
-##drop FUNCTION AtribuirEquipa;
+drop FUNCTION AtribuirEquipa;
+drop FUNCTION ElemementosEquipa;
+
 
 
