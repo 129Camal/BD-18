@@ -98,7 +98,7 @@ insert into Elemento
                 (035,'Rubén Martins', 8, 'M', '2009-07-03', 'Travessa do Entroncamento, nº129', 938765455,null, 5, 'Lobitos', 4, 'Tesoureiro'),
                 (036,'João António Cidade Vieira', 7, 'M', '2010-05-11', 'Rua da Igreja, nº68', 963265419, null, 6, 'Lobitos', 4, 'Guia'),
                 (037,'Manuel Curopos Monteiro', 6, 'M', '2011-01-31', 'Travessa das Cruzes, nº73', 934256636, null, 5, 'Lobitos', 4, 'Secretário'),
-                (038,'Paula Daniela Sousa Martins', 9, 'F', '2008-12-05', 'Rua dos Peões nº15', 912345431, null, 9, 'Lobitos', 4,'Guarda-material'),
+                (038,'Paula Daniela Sousa Martins', 9, 'F', '2008-12-05','Rua dos Peões nº15', 912345431, null, 9, 'Lobitos', 4,'Guarda-material'),
                 (039,'Maria Inês Pinto', 8, 'F', '2010-08-08','Rua dos Deuses nº62', 915674356, null, 9, 'Lobitos', 4,'Socorrista')
                 
                 ;
