@@ -19,9 +19,10 @@ USE `Agrup424` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Agrup424`.`Seccao` (
   `Designacao` VARCHAR(45) NOT NULL,
-  `Simbologia` VARCHAR(200) NULL,
-  `Patrono` VARCHAR(45) NULL,
-  PRIMARY KEY (`Designacao`))
+  `Simbologia` VARCHAR(100) NULL,
+  `Patrono` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`Designacao`),
+  UNIQUE INDEX `Designacao_UNIQUE` (`Designacao` ASC))
 ENGINE = InnoDB;
 
 
@@ -29,12 +30,13 @@ ENGINE = InnoDB;
 -- Table `Agrup424`.`Equipa`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Agrup424`.`Equipa` (
-  `idEquipa` INT NOT NULL AUTO_INCREMENT,
-  `Nome` VARCHAR(45) NULL,
-  `Lema` VARCHAR(45) NULL,
-  `Grito` VARCHAR(45) NULL,
+  `idEquipa` INT NOT NULL,
+  `Nome` VARCHAR(45) NOT NULL,
+  `Lema` VARCHAR(45) NOT NULL,
+  `Grito` VARCHAR(45) NOT NULL,
   `Seccao_Designacao` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEquipa`),
+  UNIQUE INDEX `idEquipa_UNIQUE` (`idEquipa` ASC),
   INDEX `fk_Equipa_Seccao1_idx` (`Seccao_Designacao` ASC),
   CONSTRAINT `fk_Equipa_Seccao1`
     FOREIGN KEY (`Seccao_Designacao`)
@@ -48,10 +50,9 @@ ENGINE = InnoDB;
 -- Table `Agrup424`.`Funcao`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Agrup424`.`Funcao` (
-  `Designacao` VARCHAR(45) NOT NULL,
-  `Descricao` VARCHAR(45) NULL,
-  PRIMARY KEY (`Designacao`),
-  UNIQUE INDEX `Designacao_UNIQUE` (`Designacao` ASC))
+  `Designacao` VARCHAR(100) NOT NULL,
+  `Descricao` VARCHAR(350) NOT NULL,
+  PRIMARY KEY (`Designacao`))
 ENGINE = InnoDB;
 
 
@@ -59,30 +60,23 @@ ENGINE = InnoDB;
 -- Table `Agrup424`.`Elemento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Agrup424`.`Elemento` (
-  `Nin` BIGINT(13) NOT NULL,
-  `Nome` VARCHAR(45) NULL,
-  `Idade` VARCHAR(45) NULL,
-  `Sexo` VARCHAR(1) NULL,
-  `DatadeNasc` VARCHAR(45) NULL,
-  `Morada` VARCHAR(45) NULL,
-  `Contacto` VARCHAR(45) NULL,
+  `NIN` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Nome` VARCHAR(45) NOT NULL,
+  `Idade` INT NOT NULL,
+  `Sexo` ENUM('M', 'F') NOT NULL,
+  `DatadeNasc` DATE NOT NULL,
+  `Morada` VARCHAR(45) NOT NULL,
+  `Telemovel` INT NOT NULL,
   `Email` VARCHAR(45) NULL,
-  `NoitesdeCampo` INT NULL,
-  `Funcao_Designacao` VARCHAR(45) NOT NULL,
-  `Seccao_Designacao` VARCHAR(45) NULL,
+  `NoitesdeCampo` INT NOT NULL,
   `Equipa_idEquipa` INT NULL,
-  `Elemento_Nin` BIGINT(13) NOT NULL,
-  PRIMARY KEY (`Nin`),
-  UNIQUE INDEX `Nine_UNIQUE` (`Nin` ASC),
-  INDEX `fk_Elemento_Seccao1_idx` (`Seccao_Designacao` ASC),
+  `Funcao_Designacao` VARCHAR(100) NOT NULL,
+  `Seccao_Designacao` VARCHAR(45) NULL,
+  PRIMARY KEY (`NIN`, `Funcao_Designacao`),
+  UNIQUE INDEX `NIN_UNIQUE` (`NIN` ASC),
   INDEX `fk_Elemento_Equipa1_idx` (`Equipa_idEquipa` ASC),
   INDEX `fk_Elemento_Funcao1_idx` (`Funcao_Designacao` ASC),
-  INDEX `fk_Elemento_Elemento1_idx` (`Elemento_Nin` ASC),
-  CONSTRAINT `fk_Elemento_Seccao1`
-    FOREIGN KEY (`Seccao_Designacao`)
-    REFERENCES `Agrup424`.`Seccao` (`Designacao`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_Elemento_Seccao1_idx` (`Seccao_Designacao` ASC),
   CONSTRAINT `fk_Elemento_Equipa1`
     FOREIGN KEY (`Equipa_idEquipa`)
     REFERENCES `Agrup424`.`Equipa` (`idEquipa`)
@@ -93,9 +87,29 @@ CREATE TABLE IF NOT EXISTS `Agrup424`.`Elemento` (
     REFERENCES `Agrup424`.`Funcao` (`Designacao`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Elemento_Elemento1`
-    FOREIGN KEY (`Elemento_Nin`)
-    REFERENCES `Agrup424`.`Elemento` (`Nin`)
+  CONSTRAINT `fk_Elemento_Seccao1`
+    FOREIGN KEY (`Seccao_Designacao`)
+    REFERENCES `Agrup424`.`Seccao` (`Designacao`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Agrup424`.`Atividade`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Agrup424`.`Atividade` (
+  `idAtividade` INT NOT NULL AUTO_INCREMENT,
+  `Designacao` VARCHAR(40) NOT NULL,
+  `Descricao` VARCHAR(150) NOT NULL,
+  `dia` DATE NOT NULL,
+  `Equipa_idEquipa` INT NOT NULL,
+  PRIMARY KEY (`idAtividade`),
+  UNIQUE INDEX `idAtividade_UNIQUE` (`idAtividade` ASC),
+  INDEX `fk_Atividade_Equipa1_idx` (`Equipa_idEquipa` ASC),
+  CONSTRAINT `fk_Atividade_Equipa1`
+    FOREIGN KEY (`Equipa_idEquipa`)
+    REFERENCES `Agrup424`.`Equipa` (`idEquipa`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
