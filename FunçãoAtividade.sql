@@ -26,7 +26,7 @@ CALL InsereAtividade(@designacao,@descricao,@idEquipa,@dias);*/
 /*INSERT INTO Elemento(Nin,Nome,Idade,DatadeNasc,Morada,Telemovel,Email,NoitesdeCampo,Equipa_idEquipa,Seccao_Designacao,Funcao_Designacao)
 	Values (40,'Ricardinho Costa',12,'2005-07-10','Rua dos Peões nº16',912523487,null,30,null,null,'Cozinheiro');*/
 
-<<<<<<< HEAD
+
 DELIMITER $$
 CREATE procedure InserirElemento(IN Nin_u INT,IN Nome_u VARCHAR(45),IN Idade_u INT,
 								IN DatadeNasc_u DATE,IN Morada_u VARCHAR(45),IN Telemovel_u INT,IN Email_u VARCHAR(45),
@@ -34,11 +34,6 @@ CREATE procedure InserirElemento(IN Nin_u INT,IN Nome_u VARCHAR(45),IN Idade_u I
                                 IN Funcao_Designacao_u VARCHAR(45))
 
 BEGIN
-=======
-DROP procedure InsereAtividade;
-
-CALL InsereAtividade('Escondidas','Integrar as pessoas no grupo')
->>>>>>> 8bbff436d97e9680454fe5efd6ce0bcac0ad7e71
 
 	INSERT INTO Elemento(Nin,Nome,Idade,DatadeNasc,Morada,Telemovel,Email,NoitesdeCampo,
 						Equipa_idEquipa,Seccao_Designacao,Funcao_Designacao)
@@ -63,7 +58,7 @@ BEGIN
     IF Idade_u >= 18 THEN
 		return 'Caminheiros';
     END IF;
-<<<<<<< HEAD
+
 END; //
 
 /*DELIMITER //
@@ -102,9 +97,5 @@ CALL InserirElemento(@Nin_u,@Nome_u,@Idade_u,@DatadeNasc_u,@Morada_u,@Telemovel_
 drop procedure InserirElemento;
 drop FUNCTION AtribuirSeccao;
 ##drop FUNCTION AtribuirEquipa;
-=======
-END 
-//
 
 
->>>>>>> 8bbff436d97e9680454fe5efd6ce0bcac0ad7e71
