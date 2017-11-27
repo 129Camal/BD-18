@@ -3,15 +3,19 @@ CREATE procedure InserirElemento(IN Nin_u INT,IN Nome_u VARCHAR(45),INOUT Idade_
 								IN DatadeNasc_u DATE,IN Morada_u VARCHAR(45),IN Telemovel_u INT,
                                 IN Email_u VARCHAR(45),IN NoitesdeCampo_u INT,
                                 IN Funcao_Designacao_u VARCHAR(45))
-
+	
 BEGIN
+	DECLARE erro bool DEFAULT 0;
+    DECLARE CONTINUE HANDLER FOR sqlexception SET erro =1;
 	SET @Seccao_Designacao = AtribuirSeccao(@Idade);
     SET @Equipa_idEquipa = AtribuirEquipa();
 	INSERT INTO Elemento(Nin,Nome,Idade,DatadeNasc,Morada,Telemovel,Email,NoitesdeCampo,
 						Equipa_idEquipa,Seccao_Designacao,Funcao_Designacao)
 			VALUES (Nin_u,Nome_u,Idade_u,DatadeNasc_u,Morada_u,Telemovel_u,Email_u,NoitesdeCampo_u,
 						@Equipa_idEquipa,@Seccao_Designacao,Funcao_Designacao_u);
-
+	IF erro THEN rollback;
+    else commit;
+    end if;
 END $$
 DELIMITER ;
 

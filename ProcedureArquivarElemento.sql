@@ -3,8 +3,15 @@ USE agrup424;
 DELIMITER $$
 CREATE procedure ArquivarElemento(INOUT Nin_u INT)
 BEGIN
+DECLARE erro bool DEFAULT 0;
+    DECLARE CONTINUE HANDLER FOR sqlexception SET erro =1;
+    
 	CREATE TABLE if not exists ElementoArquivado LIKE Elemento;
 	DELETE from Elemento where Elemento.Nin = Nin_u;
+    
+    IF erro THEN rollback;
+    else commit;
+    end if;
 END $$
 DELIMITER ;
 

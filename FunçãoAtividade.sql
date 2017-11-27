@@ -3,7 +3,7 @@ use agrup424;
 DELIMITER $$
 CREATE procedure InsereAtividade (IN designacao VARCHAR(40), IN descricao VARCHAR(150), IN idEquipa INT, IN dias DATE)
 
-	BEGIN
+BEGIN
 	DECLARE Erro BOOL DEFAULT 0;
     DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET Erro=1;
     START TRANSACTION;
@@ -15,7 +15,7 @@ CREATE procedure InsereAtividade (IN designacao VARCHAR(40), IN descricao VARCHA
 	THEN ROLLBACK; 
 	ELSE COMMIT;
 	END IF;
-	END $$
+END $$
 
 
 SET @designacao = 'Debates de Personalidades';
