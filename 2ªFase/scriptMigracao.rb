@@ -4,7 +4,7 @@ require 'mysql2'
 DB = 'Agrup424'
 HOST = 'localhost'
 USERNAME = 'root'
-PASSWORD = 'lareira11'
+PASSWORD = 'root'
 
 client = Mysql2::Client.new(host: HOST, username: USERNAME, password: PASSWORD, database: DB)
 res = []
